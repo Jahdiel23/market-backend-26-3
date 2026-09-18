@@ -35,3 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+##Ignorar archivos de propiedades locales ##
+application.properties
+application-dev.properties
+application-pdn.properties
