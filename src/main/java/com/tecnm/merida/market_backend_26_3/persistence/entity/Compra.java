@@ -3,6 +3,7 @@ package com.tecnm.merida.market_backend_26_3.persistence.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table (name = "compras")
@@ -14,7 +15,7 @@ public class Compra {
     private Integer idCompra;
 
     @Column (name = "id_cliente")
-    private Integer idCliente;
+    private String idCliente;
 
     private LocalDateTime fecha;
 
@@ -24,4 +25,19 @@ public class Compra {
     private String comentario;
     private String estado;
 
+    //Relación con el cliente;
+    //Muchas compras para un cliente
+
+    @ManyToOne()
+    @JoinColumn(name  = "id_cliente", insertable = false, updatable = false)
+    private Cliente cliente;
+
+    //Relación con CompraProducto
+    @OneToMany(mappedBy = "compra")
+    private List<CompraProducto> productos;
+
+    public Integer getIdCompra() {
+        return idCompra;
+
+    }
 }
