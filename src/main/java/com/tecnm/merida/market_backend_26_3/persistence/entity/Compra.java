@@ -36,6 +36,10 @@ public class Compra {
     @OneToMany(mappedBy = "compra")
     private List<CompraProducto> productos;
 
+    public void setIdCompra(Integer idCompra) {
+        this.idCompra = idCompra;
+    }
+
     public Integer getIdCompra() {
         return idCompra;
 
