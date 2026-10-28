@@ -23,20 +23,30 @@ public class CompraProducto {
     private LocalDateTime fecha;
 
     @ManyToOne
-    @JoinColumn(name = "id_compra", insertable = false, updatable = false)
+    @JoinColumn(
+            name = "id_compra",
+            insertable = false,
+            updatable = false
+    )
     private Compra compra;
 
     @ManyToOne
-    @JoinColumn(name ="id_producto", insertable = false, updatable = false)
+    @JoinColumn(
+            name = "id_producto",
+            insertable = false,
+            updatable = false
+    )
     private Producto producto;
-
-
-
 
     public CompraProducto() {
     }
 
-    public CompraProducto(CompraProductoPK id, Integer cantidad, Double total, Boolean estado, LocalDateTime fecha) {
+    public CompraProducto(
+            CompraProductoPK id,
+            Integer cantidad,
+            Double total,
+            Boolean estado,
+            LocalDateTime fecha) {
         this.id = id;
         this.cantidad = cantidad;
         this.total = total;
@@ -44,7 +54,6 @@ public class CompraProducto {
         this.fecha = fecha;
     }
 
-    // Getters y Setters
     public CompraProductoPK getId() {
         return id;
     }
@@ -83,5 +92,21 @@ public class CompraProducto {
 
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }
