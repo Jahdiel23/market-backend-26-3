@@ -23,8 +23,11 @@ import java.util.List;
 
 public class ProductController {
 
-    private ProductService productService;
-    private ProductRepository productRepository;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping()
     @Operation(summary = "Get all products",
@@ -99,6 +102,24 @@ public class ProductController {
     public ResponseEntity<Product> save(@RequestBody Product product) {
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
+
+
+    @PutMapping("/{id}")
+    @Operation(
+            summary = "Update an existing product",
+            description = "Update a product using its ID"
+    )
+    @ApiResponse(responseCode = "200", description = "Product updated successfully")
+    @ApiResponse(responseCode = "404", description = "Product not found")
+    public ResponseEntity<Product> update(
+            @PathVariable("id") int productId,
+            @RequestBody Product product) {
+
+        return productService.update(productId, product)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> delete(@PathVariable("id") int productId) {

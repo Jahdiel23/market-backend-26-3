@@ -22,12 +22,9 @@ public class CompraProducto {
     @Column(name = "fecha")
     private LocalDateTime fecha;
 
+    @MapsId("idCompra")
     @ManyToOne
-    @JoinColumn(
-            name = "id_compra",
-            insertable = false,
-            updatable = false
-    )
+    @JoinColumn(name = "id_compra")
     private Compra compra;
 
     @ManyToOne
