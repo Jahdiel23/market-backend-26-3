@@ -30,6 +30,9 @@ public class Cliente {
     @Column(name = "correo_electronico")
     private String correoElectronico;
 
+    @Column(name = "password")
+    private String password;
+
     public Cliente() {
     }
 
@@ -98,5 +101,12 @@ public class Cliente {
         this.compras = compras;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 }
